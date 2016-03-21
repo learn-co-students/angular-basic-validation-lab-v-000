@@ -44,7 +44,7 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form name='form'>
+            <form name='login_form'>
                 <div>
                   Username:
                   <input
@@ -54,14 +54,14 @@
                      minlength="3"
                      maxlength="20"
                      ng-model="ctrl.username" />
-                     <div ng-if="form.username.$touched">
-                        <div ng-if="form.username.$error.required">
+                     <div ng-if="login_form.username.$touched">
+                        <div ng-if="login_form.username.$error.required">
                             Username is required!
                         </div>
-                        <div ng-if="form.username.$error.minlength">
+                        <div ng-if="login_form.username.$error.minlength">
                             Username must be longer than 3 characters!
                         </div>
-                        <div ng-if="form.username.$error.maxlength">
+                        <div ng-if="login_form.username.$error.maxlength">
                             Username must be shorter than 20 characters!
                         </div>
                     </div>
@@ -75,11 +75,11 @@
                       minlength="8"
                       required="required"
                       ng-model="ctrl.password"/>
-                      <div ng-if="form.password.$touched">
-                        <div ng-if="form.password.$error.minlength">
+                      <div ng-if="login_form.password.$touched">
+                        <div ng-if="login_form.password.$error.minlength">
                           Password must be longer than 8 characters!
                         </div>
-                        <div ng-if="form.password.$error.required">
+                        <div ng-if="login_form.password.$error.required">
                           Password is required!
                         </div>
                       </div>
@@ -92,11 +92,11 @@
                     type="email"
                     required="required"
                     ng-model="ctrl.email"/>
-                    <div ng-if="form.email.$touched">
-                      <div ng-if="form.email.$error.required">
+                    <div ng-if="login_form.email.$touched">
+                      <div ng-if="login_form.email.$error.required">
                         Email is required!
                       </div>
-                      <div ng-if="form.email.$error.email">
+                      <div ng-if="login_form.email.$error.email">
                         Email must be valid!
                       </div>
                     </div>
