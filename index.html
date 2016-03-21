@@ -44,8 +44,47 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
 
+                <div>
+                    <input placeholder="name" name="username" ng-model="ctrl.username" required="required" minlength="3" maxlength="20" type="text" />
+                     <div ng-if="form.username.$touched">
+                        <div ng-if="form.username.$error.required">
+                            Username is required!
+                        </div>
+                        <div ng-if="form.username.$error.minlength">
+                            Username must be more than 3 characters!
+                        </div>
+                        <div ng-if="form.username.$error.maxlength">
+                            Username must be less than 20 characters!
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <input placeholder="email" name="email" ng-model="ctrl.email" required="required" type="email" />
+                    <div ng-if="form.email.$touched">
+                        <div ng-if="form.email.$error.required">
+                            Email is required!
+                        </div>
+                        <div ng-if="form.email.$error.email">
+                            Email must be valid!
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <input placeholder="password" name="password" ng-model="ctrl.password" required="required" type="password" minlength="8" />
+                    <div ng-if="form.password.$touched">
+                        <div ng-if="form.password.$error.required">
+                            Password is required!
+                        </div>
+                        <div ng-if="form.password.$error.minlength">
+                            Password must be more than 8 characters!
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" />
             </form>
         </div>
     </div>
