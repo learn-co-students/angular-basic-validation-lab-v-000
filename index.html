@@ -46,7 +46,7 @@
     <div ng-controller="FormController as ctrl">
       <form name="form">
         <div>
-          <label for="username">Username: </label>
+          Username:
           <input type="text" name="username" minlength="3" maxlength="20" required="required" ng-model="ctrl.username" />
 
           <div ng-if="form.username.$touched">
@@ -61,8 +61,10 @@
             </div>
           </div>
         </div>
-          <label for="password">Password: </label>
-          <input type="password "name="password" minlength="8" required="required" ng-model="ctrl.password" />
+        <div>
+          Password
+          <input type="password" name="password" minlength="8" required="required" ng-model="ctrl.password" />
+
           <div ng-if="form.password.$touched">
             <div ng-if="form.password.$error.required">
               Password is required!
@@ -73,8 +75,9 @@
           </div>
         </div>
         <div>
-          <label for="email">Email: </label>
+          Email
           <input type="email" name="email" required="required" ng-model="ctrl.email" />
+
           <div ng-if="form.email.$touched">
             <div ng-if="form.email.$error.required">
               Email is required!
