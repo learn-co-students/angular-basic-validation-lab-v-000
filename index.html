@@ -50,7 +50,7 @@
                 ng-model="ctrl.username"
                 ng-minlength="3"
                 ng-maxlength="20"
-                ng-required="required" />
+                required="" />
                 <div ng-if="form.username.$touched">
                     <div ng-show="form.username.$error.required">
                         Username is required!
@@ -66,9 +66,26 @@
                 name="password"
                 ng-model="ctrl.password"
                 ng-minlength="8"
-                ng-required="required" />
-                <div ng-show="form.username.$error.minlength">
-                    Username must be more than 8 characters!
+                required="" />
+                <div ng-if="form.password.$touched">
+                    <div ng-show="form.password.$error.required">
+                        Password required.
+                    </div>
+                     <div ng-show="form.password.$error.minlength">
+                         Username must be more than 8 characters!
+                     </div>
+                </div>
+                <input type="email"
+                name="email"
+                ng-model="ctrl.email"
+                required="" />
+                <div ng-if="form.email.$touched">
+                    <div ng-show="form.email.$error.email">
+                        Please enter a valid email address!
+                    </div>
+                    <div ng-show="form.email.$error.required">
+                        Email is required!
+                    </div>
                 </div>
 
             </form>
