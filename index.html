@@ -44,8 +44,20 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
-
+            <form name="form">
+                <input 
+                    ng-model="ctrl.username" 
+                    name="username" 
+                    required 
+                    pattern=".{3,20}" 
+                    placeholder="Username"/>
+                    <div ng-show="form.username.$touched && (form.username.$error.required || form.username.$error.pattern)">Username is required to be 3-20 characters!</div>
+                <input ng-model="ctrl.password" type="password"
+                    name="password" required pattern=".{8,}" placeholder="password"/>
+                <div ng-show="form.password.$touched && (form.password.$error.required || form.password.$error.pattern)">Password is required to be 8!</div>
+                <input ng-model="ctrl.email" required type="email"
+                    name="email" placeholder="Email"/>
+                <div ng-show="form.email.$touched && (form.email.$error.required || form.email.$error.email)">Email is required to be valid!!!!!!!!!!!!!!!!!!!!</div>
             </form>
         </div>
     </div>
