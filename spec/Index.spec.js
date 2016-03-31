@@ -24,7 +24,7 @@ describe('Events Test', function() {
 
 		it('should not say anything when valid', function() {
 			username.click();
-			username.sendKeys('aa');
+			username.sendKeys('a');
 			expect(messages.getText()).toEqual('');
 		});
 	});
