@@ -46,16 +46,45 @@
         <div ng-controller="FormController as ctrl">
             <form name="form">
               <label for="username">Username: </label>
-              <input type="text" name="username" required='required' ng-model="ctrl.username">
+              <input type="text" name="username"
+                required='required'
+                minlength='3'
+                ng-model="ctrl.username">
               <div ng-if="form.username.$touched">
                 <div ng-if="form.username.$error.required">
-                  Username is required!
+                  Username is required
+                </div>
+                <div ng-if="form.username.$error.minlength">
+                   User name must be at least 3 characters long
                 </div>
               </div>
+              <br>
               <label for="password">Password: </label>
-              <input type="password" name="password" ng-model="ctrl.form.password"><br>
+              <input type="password" name="password"
+                required="required"
+                minlength=8
+                ng-model="ctrl.form.password" />
+              <div ng-if="form.password.$touched">
+                <div ng-if="form.password.$error.required">
+                  A password is required <br>
+                </div>
+                <div ng-if="form.password.$error.minlength">
+                  Your password must be at least 8 characters long <br>
+                </div>
+              </div>
+              <br>
               <label for="email">Email: </label>
-              <input type="email" name="email" ng-model="ctrl.form.email">
+              <input type="email" name="email"
+                required="required"
+                ng-model="ctrl.form.email" />
+              <div ng-if="form.email.$touched">
+                <div ng-if="form.email.$error.required">
+                  An email is required <br>
+                </div>
+                <div ng-if="form.email.$error.email">
+                  Must use a valid email
+                </div>
+              </div>
             </form>
         </div>
     </div>
