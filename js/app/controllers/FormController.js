@@ -1,7 +1,7 @@
 function FormController($scope) {
-
+  
 }
 
 angular
-    .module('app')
-    .controller('FormController', FormController);
+  .module('app')
+  .controller('FormController', FormController);
