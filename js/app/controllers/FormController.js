@@ -1,5 +1,7 @@
 function FormController($scope) {
-
+  $scope.name = '';
+  $scope.password = '';
+  $scope.email = '';
 }
 
 angular
