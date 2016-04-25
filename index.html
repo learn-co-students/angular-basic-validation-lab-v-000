@@ -44,7 +44,52 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
+                <input 
+                    name="username" 
+                    required="required"
+                    ng-model="ctrl.username"
+                    ng-minlength="3" 
+                    ng-maxlength="20" />
+                <div ng-if="form.username.$touched">
+                    <div ng-if="form.username.$error.required">
+                        Username is required!
+                    </div>
+                    <div ng-if="form.username.$error.minlength">
+                        Username must be at least 3 characters long!
+                    </div>
+                    <div ng-if="form.username.$error.maxlength">
+                        Username must be fewer than 20 characters long!
+                    </div>
+                </div>
+
+                <input 
+                    name="password" 
+                    required="required" 
+                    ng-model="ctrl.password" 
+                    ng-minlength="8" />
+                <div ng-if="form.password.$touched">
+                    <div ng-if="form.password.$error.required">
+                        Password is required!
+                    </div>
+                    <div ng-if="form.password.$error.minlength">
+                        Password must be at least 8 characters long!
+                    </div>
+                </div>
+
+                <input 
+                    name="email" 
+                    required="required" 
+                    ng-model="ctrl.email" 
+                    type="email" />
+                <div ng-if="form.email.$touched">
+                    <div ng-if="form.email.$error.required">
+                        Email is required!
+                    </div>
+                    <div ng-if="!form.email.$valid">
+                        Email must be a valid email address!
+                    </div>
+                </div>
 
             </form>
         </div>
