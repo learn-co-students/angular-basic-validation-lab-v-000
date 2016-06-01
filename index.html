@@ -83,7 +83,7 @@
                     <span ng-if="form.email.$touched && form.email.$error.required">
                         email required!
                     </span>
-                    <span ng-if="form.email.$touched && form.email.$invalid">
+                    <span ng-if="form.email.$touched && form.email.$error.email">
                         not a valid email address, dumbass
                     </span>
                 </div>
