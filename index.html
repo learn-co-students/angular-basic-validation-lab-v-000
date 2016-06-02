@@ -44,8 +44,57 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
-
+            {{signupForm.email}}
+            <form name='signupForm'>
+                <label for='username'>Username:</label>
+                <input 
+                    name='username' 
+                    id='username' 
+                    minlength="3"
+                    maxlength="20"
+                    required="required"
+                    ng-model='ctrl.username'>
+                <div ng-if="signupForm.username.$touched">
+                    <div ng-if="signupForm.username.$error.required">
+                        <p>"You gots to put a username. It's required"</p>
+                    </div>
+                    <div ng-if="signupForm.username.$error.minlength">
+                        <p>Who's username is less than 3 characters?</p>
+                    </div>
+                    <div ng-if="signupForm.username.$error.maxlength">
+                        <p>Whoa there {{signupForm.username.$viewValue}} do you think we can try a nickname? Something with maybe 20 characters or less perhaps?</p>
+                    </div>
+                </div>
+                <label for='password'>Password:</label>
+                <input 
+                    name='password' 
+                    id='password' 
+                    minlength="8"
+                    required="required"
+                    ng-model='ctrl.password'>
+                <div ng-if="signupForm.password.$touched">
+                    <div ng-if="signupForm.password.$error.required">
+                        <p>"Passwords are required. If this was a bank site would you leave it blank?"</p>
+                    </div>
+                    <div ng-if="signupForm.password.$error.minlength">
+                        <p>Password should be at least 8 characters but don't use 'password' thats just dumb.</p>
+                    </div>
+                </div>
+                <label for='email'>Email:</label>
+                <input 
+                    name='email' 
+                    id='username' 
+                    type='email'
+                    required="required"
+                    ng-model='ctrl.email'>
+                <div ng-if="signupForm.email.$touched">
+                    <div ng-if="signupForm.email.$error.required">
+                        <p>Email address required. If you don't have an email address might I suggest going back to 1994 and giving AOL a shot?</p>
+                    </div>
+                    <div ng-if="signupForm.email.$error.email">
+                        <p>what kind of email address is that? Try something a little more, shall we say, valid?</p>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
