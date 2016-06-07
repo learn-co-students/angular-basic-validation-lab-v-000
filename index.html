@@ -44,8 +44,72 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
+              <!-- <pre>{{ form || json }}</pre> -->
 
+              <div>
+                <label for="username">Username: </label>
+                <input
+                  type="text"
+                  name="username"
+                  pattern=".{3,20}"
+                  required="required"
+                  ng-model="ctrl.username"
+                  />
+
+                <div ng-if="form.username.$touched">
+                  <div ng-if="form.username.$error.required">
+                    <p>Username if required</p>
+                  </div>
+
+                  <div ng-if="form.username.$error.pattern">
+                    <p>Username must be between 3 and 20 characters</p>
+                  </div>
+                </div>
+              </div><br>
+
+              <div>
+                <label for="password">Password: </label>
+                <input
+                  type="password"
+                  name="password"
+                  pattern=".{8,}"
+                  required="required"
+                  ng-model="ctrl.password"
+                  />
+
+                <div ng-if="form.password.$touched">
+                  <div ng-if="form.password.$error.required">
+                    <p>Password if required</p>
+                  </div>
+
+                  <div ng-if="form.password.$error.pattern">
+                    <p>Password must be at least 8 characters</p>
+                  </div>
+                </div>
+              </div><br>
+
+              <div>
+                <label for="email">Email: </label>
+                <input
+                  type="email"
+                  name="email"
+                  required="required"
+                  ng-model="ctrl.email"
+                  />
+
+                <div ng-if="form.email.$touched">
+                  <div ng-if="form.email.$error.required">
+                    <p>Email if required</p>
+                  </div>
+
+                  <div ng-if="form.email.$error.email">
+                    <p>Email must be valid</p>
+                  </div>
+                </div>
+              </div><br>
+
+              <input type="submit">
             </form>
         </div>
     </div>
