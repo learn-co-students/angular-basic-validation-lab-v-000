@@ -46,8 +46,13 @@ describe('Events Test', function() {
 			expect(messages.getText()).toContain('8');
 		});
 
+		it('should contain a special character', function() {
+			password.sendKeys('aaasdfg');
+			expect(messages.getText()).toContain('special character');
+		});
+
 		it('should not say anything when valid', function() {
-			password.sendKeys('aaasdasd');
+			password.sendKeys('aaasdas&');
 			expect(messages.getText()).toEqual('');
 		});
 	});
