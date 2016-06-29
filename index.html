@@ -44,7 +44,63 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
+
+              USERNAME:
+              <input
+                ng-model="ctrl.username"
+                name="username"
+                type="text"
+                minlength=3
+                maxlength=20
+                required="required"
+             />
+            <div ng-if="form.username.$touched">
+                <div ng-if="form.username.$error.required">
+                    Username is required!
+                </div>
+                <div ng-if="form.username.$error.minlength">
+                    Username must be more than 2 characters!
+                </div>
+                <div ng-if="form.username.$error.maxlength">
+                    Username must be less than 21 characters!
+                </div>
+            </div>
+
+
+              PASSWORD:
+              <input
+                ng-model="ctrl.password"
+                name="password"
+                type="text"
+                minlength=8
+                required="required"
+             />
+
+             <div ng-if="form.password.$touched">
+               <div ng-if="form.password.$error.required">
+                 Password is required!
+               </div>
+               <div ng-if="form.password.$error.minlength">
+                 Password must be more than 7 characters!
+               </div>
+             </div>
+
+             EMAIL:
+              <input
+                ng-model="ctrl.email"
+                name="email"
+                required="required"
+                type="email"
+             />
+             <div ng-if="form.email.$touched">
+               <div ng-if="form.email.$error.required">
+                 Email is required!
+               </div>
+               <div ng-if="form.email.$error.email">
+                 Email must be a valid email!
+               </div>
+             </div>
 
             </form>
         </div>
