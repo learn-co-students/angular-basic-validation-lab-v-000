@@ -44,8 +44,19 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
-
+            <form name='form'>
+              <input name="username" required="required" ng-model="ctrl.username">
+              <div ng-if="form.username.$touched && form.username.$error.required">
+                Username is required!
+              </div>
+              <input name="password" required="required" ng-model="ctrl.password">
+              <div ng-if="form.password.$touched && form.password.$error.required">
+                Username is required!
+              </div>
+              <input name="username" required="required" ng-model="ctrl.username">
+              <div ng-if="form.username.$touched && form.username.$error.required">
+                Username is required!
+              </div>
             </form>
         </div>
     </div>
