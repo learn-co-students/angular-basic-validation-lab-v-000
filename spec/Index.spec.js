@@ -20,7 +20,7 @@ describe('Events Test', function() {
 			username.sendKeys('aa');
 			expect(messages.getText()).toContain('3');
 		});
-		
+
 		it('should make sure the username maxlength is 20 characters', function() {
 			username.sendKeys(protractor.Key.BACK_SPACE, protractor.Key.BACK_SPACE);
 			username.sendKeys('abcdefghijklmnopqrstuvwxyz');
