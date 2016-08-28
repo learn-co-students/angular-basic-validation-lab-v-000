@@ -44,8 +44,45 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name='form'>
+              <label>Username: </label>
+              <input name="username" ng-model="ctrl.username" required="required" minlength="3" maxlength="20">
+                <div ng-if="form.username.$touched">
+                  <div ng-if="form.username.$error.required">
+                    Username is required!
+                  </div>
 
+                  <div ng-if="form.username.$error.minlength">
+                    Username must be longer than 3 characters.
+                  </div>
+
+                  <div ng-if="form.username.$error.maxlength">
+                    Username must be shorter than 20 characters.
+                  </div>
+                </div>
+
+              <label>Password: </label>
+              <input name="password" ng-model='ctrl.password' required="required" minlength="8">
+                <div ng-if="form.password.$touched">
+                  <div ng-if="form.password.$error.required">
+                    Password is required.
+                  </div>
+                  <div ng-if="form.password.$error.minlength">
+                    Your password must be 8 characters or longer.
+                  </div>
+                </div>
+
+                <label>Email: </label>
+                <input type="email" required="required" ng-model="ctrl.email" name="email">
+                  <div ng-if="form.email.$touched">
+                    <div ng-if="form.email.$error.required">
+                      Your email is required.
+                    </div>
+
+                    <div ng-if="form.email.$error.email">
+                      It must be a valid email.
+                    </div>
+                  </div>
             </form>
         </div>
     </div>
