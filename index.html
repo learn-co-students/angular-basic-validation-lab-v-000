@@ -44,7 +44,57 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name='form'>
+                Username: <input
+                    ng-model='ctrl.username'
+                    name='username'
+                    required='required'
+                    type='text'
+                    minlength='3'
+                    maxlength='20' />
+
+                <div ng-if='form.username.$touched'>
+                    <div ng-if='form.username.$error.required'>
+                        Oops, a username is required.
+                    </div>
+                    <div ng-if='form.username.$error.minlength'>
+                        Oops, your username must be more than 3 characters.
+                    </div>
+                    <div ng-if='form.username.$error.maxlength'>
+                        Oops, your username must be less than 20 characters.
+                    </div>
+                </div>
+
+                Password: <input
+                    ng-model='ctrl.password'
+                    name='password'
+                    required='required'
+                    type='password'
+                    minlength='3' />
+
+                <div ng-if='form.password.$touched'>
+                    <div ng-if='form.password.$error.required'>
+                        Oops, a password is required.
+                    </div>
+                    <div ng-if='form.password.$error.minlength'>
+                        Oops, your password must be more than 8 characters.
+                    </div>
+                </div>
+
+                Email: <input
+                    ng-model='ctrl.email'
+                    name='email'
+                    required='required'
+                    type='email' />
+
+                <div ng-if='form.email.$touched'>
+                    <div ng-if='form.email.$error.required'>
+                        Oops, an email is required.
+                    </div>
+                    <div ng-if='form.email.$error.email'>
+                        Oops, your email must be valid.
+                    </div>
+                </div>
 
             </form>
         </div>
