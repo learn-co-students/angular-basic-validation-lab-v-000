@@ -44,8 +44,34 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
+                Name: <input
+                name="username"
+                required="required"
+                ng-model="ctrl.username"
+                maxlength="20"
+                minlength="3"/>
 
+
+                <div ng-if="form.username.$dirty"></div>
+                
+               
+                <div ng-if="form.username.$touched">
+                    This field is required. </div>
+
+
+                Password: <input 
+                name="password"
+                required="required"
+                ng-model="ctrl.password"/>
+                Email: <input
+                name="email"
+                type="email"
+                required="required" 
+                ng-model="ctrl.email"/>
+
+
+                <!-- <input type="submit" ng-click="update(user)" value="Submit" /> -->
             </form>
         </div>
     </div>
