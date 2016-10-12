@@ -48,7 +48,7 @@
             <form name="form">
                 <pre>{{ form | json }}</pre>
                 <div> Username:
-                <input type="text" name="username" minlength="3" maxlength="20" required="required" ng-model="ctrl.username" />
+                <input type="text" ng-model="ctrl.username" name="username" minlength="3" maxlength="20" required="required"/>
 
                     <div ng-if="form.username.$touched">
                         <div ng-if="form.username.$error.required">
@@ -62,9 +62,9 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div> Password: 
-                    <input type="password" name="password" minlength="8" required="required" ng-model="ctrl.password" />
+                    <input type="password" ng-model="ctrl.password" name="password" minlength="8" required="required"/>
 
                     <div ng-if="form.password.$touched">
                         <div ng-if="form.password.$error.required">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                <div>Email:<input type="email" name="email" required="required" ng-model="ctrl.email" />
+                <div>Email:<input type="email" ng-model="ctrl.email" name="email" required="required"/>
 
                     <div ng-if="form.email.$touched">
                         <div ng-if="form.email.$error.required">
