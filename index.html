@@ -42,13 +42,69 @@
 </head>
 <body>
 
-    <div ng-app="app" class="app">
-        <div ng-controller="FormController as ctrl">
-            <form>
+  <div ng-app="app" class="app">
+    <div ng-controller="FormController as ctrl">
+      <form name="form">
+        <div>
+          <input
+            type="text"
+            name="username"
+            required="required"
+            minlength="3"
+            maxlength="20"
+            ng-model="ctrl.username"
+            placeholder="Username"/>
 
-            </form>
+          <div ng-if="form.username.$touched">
+            <div ng-if="form.username.$error.required">
+              <p>Your username is required.</p>
+            </div>
+            <div ng-if="form.username.$error.minlength">
+              <p>Your username must be at least 3 characters long.</p>
+            </div>
+            <div ng-if="form.username.$error.maxlength">
+              <p>Your username cannot exceed 20 characters.</p>
+            </div>
+          </div>
         </div>
+        <div>
+          <input
+            type="password"
+            name="password"
+            required="required"
+            minlength="8"
+            ng-model="ctrl.password"
+            placeholder="Password"/>
+
+          <div ng-if="form.password.$touched">
+            <div ng-if="form.password.$error.required">
+              <p>Your password is required.</p>
+            </div>
+            <div ng-if="form.password.$error.minlength">
+              <p>Your password should be at least 8 characters long.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            required="required"
+            ng-model="ctrl.email"
+            placeholder="Email" />
+
+          <div ng-if="form.email.$touched">
+            <div ng-if="form.email.$error.required">
+              <p>Your email address is required.</p>
+            </div>
+            <div ng-if="form.email.$error.email">
+              <p>Your email must be in a valid format.</p>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 
     <script src="js/angular.js"></script>
     <script src="js/app/app.js"></script>
