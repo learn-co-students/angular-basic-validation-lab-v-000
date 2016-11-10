@@ -44,8 +44,55 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
+               <div>Username:
+                    <input
+                        type="text"
+                        name="username"
+                        minlength="3"
+                        maxlength="20"
+                        required="required"
+                        ng-model="ctrl.username" />
 
+                    <div ng-if="form.username.$touched">
+                        <div ng-if="form.username.$error.required">
+                            Username required!
+                        </div>
+                        <div ng-if="form.username.$error.minlength">
+                            Must be longer than 3 characters!
+                        </div>
+                        <div ng-if="form.username.$error.maxlength">
+                            Must be less than 20 characters!
+                        </div>
+                    </div>
+                </div>
+                <input
+                    type="password"
+                    name="password"
+                    minlength="8"
+                    required="required"
+                    ng-model="ctrl.password" />
+                <div ng-if="form.password.$touched">  
+                    <div ng-if="form.password.$error.required">
+                        Password required!
+                    </div>
+                    <div ng-if="form.password.$error.minlength">
+                        Must be more than 8 characters!
+                    </div>
+                </div>
+                <input
+                    type="email"
+                    name="email"
+                    required="required"
+                    ng-model="ctrl.email" />
+                <div ng-if="form.email.$touched">
+                    <div ng-if="form.email.$error.required">
+                        Email required!
+                    </div>
+                    <div ng-if="form.email.$error.email">
+                        Must be a valid email! 
+                    </div>
+                </div>  
             </form>
         </div>
     </div>
