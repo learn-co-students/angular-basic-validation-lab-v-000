@@ -1,58 +1,100 @@
 <!doctype html>
 <html>
+
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Angular Application</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Angular Application</title>
 
-    <style>
-        body {
-            font-family: "Helvetica Neue", Verdana, sans-serif;
-        }
+  <style>
+    body {
+      font-family: "Helvetica Neue", Verdana, sans-serif;
+    }
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            margin: 50px 0;
-        }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin: 50px 0;
+    }
 
-        input {
-            font-size: 16px;
-            padding: 5px 7px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-        }
-        thead {
-            background: rgba(0, 0, 0, 0.05);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-            color: rgba(0, 0, 0, 0.8);
-        }
+    input {
+      font-size: 16px;
+      padding: 5px 7px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 3px;
+    }
 
-        tr:not(:last-of-type) {
-            border-bottom: 1px solid map-get($border-color, light);
-        }
+    thead {
+      background: rgba(0, 0, 0, 0.05);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.8);
+    }
 
-        td {
-            padding: 16px 12px 14px;
-        }
-    </style>
+    tr:not(:last-of-type) {
+      border-bottom: 1px solid map-get($border-color, light);
+    }
+
+    td {
+      padding: 16px 12px 14px;
+    }
+  </style>
 </head>
+
 <body>
 
-    <div ng-app="app" class="app">
-        <div ng-controller="FormController as ctrl">
-            <form>
+  <div ng-app="app" class="app">
+    <div ng-controller="FormController as ctrl">
+      <form name='form'>
+        <label>Username: </label>
+        <input name="username" ng-model="ctrl.username" required="required" minlength="3" maxlength="20">
+        <div ng-if="form.username.$touched">
+          <div ng-if="form.username.$error.required">
+            Username is required!
+          </div>
 
-            </form>
+          <div ng-if="form.username.$error.minlength">
+            Username must be longer than 3 characters.
+          </div>
+
+          <div ng-if="form.username.$error.maxlength">
+            Username must be shorter than 20 characters.
+          </div>
         </div>
-    </div>
 
-    <script src="js/angular.js"></script>
-    <script src="js/app/app.js"></script>
-    <script src="js/app/controllers/FormController.js"></script>
+        <label>Password: </label>
+        <input name="password" ng-model='ctrl.password' required="required" minlength="8">
+        <div ng-if="form.password.$touched">
+          <div ng-if="form.password.$error.required">
+            Password is required.
+          </div>
+          <div ng-if="form.password.$error.minlength">
+            Your password must be 8 characters or longer.
+          </div>
+        </div>
+
+        <label>Email: </label>
+        <input type="email" required="required" ng-model="ctrl.email" name="email">
+        <div ng-if="form.email.$touched">
+          <div ng-if="form.email.$error.required">
+            Your email is required.
+          </div>
+
+          <div ng-if="form.email.$error.email">
+            It must be a valid email.
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/angular.js"></script>
+  <script src="js/app/app.js"></script>
+  <script src="js/app/controllers/FormController.js"></script>
 
 </body>
+
+
 </html>
