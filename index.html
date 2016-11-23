@@ -38,19 +38,47 @@
         td {
             padding: 16px 12px 14px;
         }
+        div{
+          display:inline-block;
+          vertical-align:top;
+          margin-top: 5px;
+        }
+        div[ng-messages] {
+          color: #ff0000;
+        }
     </style>
 </head>
 <body>
 
     <div ng-app="app" class="app">
-        <div ng-controller="FormController as ctrl">
-            <form>
+      <div ng-controller="FormController as ctrl">
+        <form name="form">
+          <label>Username:</label>
+          <input type="text" name="username" ng-model="username" minlength="3" maxlength="20" required />
+          <div ng-messages="form.username.$touched && form.username.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="minlength maxlength">Username must be between 3 - 20 character length </div>
+          </div><br>
 
-            </form>
-        </div>
+          <label>Password:</label>
+          <input type="text" name="password" ng-model="password" minlength="8" required />
+          <div ng-messages="form.password.$touched && form.password.$error" >
+            <div ng-message="required">This field is required</div>
+            <div ng-message="minlength">Password must at list 8 </div>
+          </div><br>
+
+
+          <label>Email Address:</label>
+          <input type="email" name="email" ng-model="email" required />
+          <div ng-messages="form.email.$touched && form.email.$error">
+            <div ng-message="required">This field is required</div>
+            <div ng-message="email">Your email address is invalid</div>
+          </div>
+      </div>
     </div>
 
     <script src="js/angular.js"></script>
+    <script src="js/angular-messages.min.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/controllers/FormController.js"></script>
 
