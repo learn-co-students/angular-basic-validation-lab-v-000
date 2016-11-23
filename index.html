@@ -44,8 +44,62 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form">
+              <!-- Username -->
+              <input
+                type="text"
+                name="username"
+                required
+                minlength="3"
+                maxlength="20"
+                ng-model="ctrl.username"
+                placeholder="username" />
 
+                <div ng-if="form.username.$touched">
+                  <div ng-if="form.username.$error.required">
+                    Username is required!
+                  </div>
+                  <div ng-if="form.username.$error.minlength">
+                    Minimum 3 characters for a username
+                  </div>
+                  <div ng-if="form.username.$error.maxlength">
+                    Too long!
+                  </div>
+                </div>
+
+                <!-- Password -->
+                <input
+                  type="text"
+                  name="password"
+                  required
+                  minlength="8"
+                  ng-model="ctrl.password"
+                  placeholder="password" />
+                  <div ng-if="form.password.$touched">
+                    <div ng-if="form.password.$error.required">
+                      Password is required!
+                    </div>
+                    <div ng-if="form.password.$error.minlength">
+                      Password must be at least 8 characters
+                    </div>
+                  </div>
+
+                  <!-- Email -->
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  ng-model="ctrl.email"
+                  placeholder="email" />
+
+                  <div ng-if="form.email.$touched">
+                    <div ng-if="form.email.$error.required">
+                      Email is required
+                    </div>
+                    <div ng-if="form.email.$error.email">
+                      Must be a valid email
+                    </div>
+                  </div>
             </form>
         </div>
     </div>
