@@ -44,7 +44,24 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name='myform'>
+              <input type="text" ng-minlength='3' ng-maxlength='20' required="required" name="username" ng-model="ctrl.username">
+              <div ng-messages="myform.username.$error">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="minlength">Message must be over 3 characters</div>
+                <div ng-message="maxlength">Message must not exceed 20 characters</div>
+              </div>
+              <input type="password" ng-minlength='8' required="required" name="password" ng-model="ctrl.password">
+              <div ng-messages="myform.password.$error">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="minlength">Message must be at least 8 characters</div>
+              </div>
+              <input type="email" required="required" name="email" ng-model="ctrl.email">
+              <div ng-messages="myform.email.$error">
+                <div ng-message="required">This field is required</div>
+                <div ng-message="maxlength">Message must not exceed 20 characters</div>
+                <div ng-message="email">This field must be a valid email address.</div>
+              </div>
 
             </form>
         </div>
@@ -52,6 +69,7 @@
 
     <script src="js/angular.js"></script>
     <script src="js/app/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.9/angular-messages.js"></script>
     <script src="js/app/controllers/FormController.js"></script>
 
 </body>
