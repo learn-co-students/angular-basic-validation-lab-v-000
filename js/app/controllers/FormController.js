@@ -1,5 +1,5 @@
 function FormController($scope) {
-
+  debugger
 }
 
 angular
