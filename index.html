@@ -44,8 +44,43 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name="form" novalidate>
+                <div>
+                    Username: <input type="text" name="username" ng-model="ctrl.username" minlength="3" maxlength="20" required/>
+                    <div ng-if="form.username.$touched">
+                        <span ng-show="form.username.$error.required">
+                            Username is required
+                        </span>
+                        <span ng-show="form.username.$error.minlength || form.username.$error.maxlength">
+                            Username must be between 3-20 chars
+                        </span>
+                    </div>
+                </div>
 
+                <div>
+                    Password: <input type="password" name="password" ng-model="ctrl.password" minlength="8" required/>
+                    <div ng-if="form.password.$touched">
+                        <span ng-show="form.password.$error.required">
+                            Password is required
+                        </span>
+                        <span ng-show="form.password.$error.minlength">
+                            Password must be at least 8 characters
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    Email: <input type="email" name="email" ng-model="ctrl.email" required>
+                    <div ng-if="form.email.$touched">
+                        <span ng-show="form.email.$error.required">
+                            Email is required
+                        </span>
+                        <span ng-show="form.email.$invalid">
+                            Email must be valid
+                        </span>
+                    </div>
+                </div>
+                <input type="submit" value="Submit">
             </form>
         </div>
     </div>
