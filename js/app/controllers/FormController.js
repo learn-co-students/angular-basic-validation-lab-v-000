@@ -1,5 +1,6 @@
 function FormController($scope) {
 
+  var ctrl = this;
 }
 
 angular
