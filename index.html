@@ -44,8 +44,43 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
-
+            <form name="form">
+              <div class="name">
+                Username:
+                <input
+                  name="username"
+                  ng-model="ctrl.username"
+                  required="required"
+                  ng-minlength="3"/>
+                  <div ng-messages="form.username.$error" style="color:maroon" role="alert">
+                    <div ng-message="required">Your name is required.</div>
+                    <div ng-message="minlength">Your name should be at least 3 letters long</div>
+                  </div>
+              </div>
+              <div class="password">
+                Password:
+                <input
+                  name="password"
+                  ng-model="ctrl.password"
+                  required="required"
+                  ng-minlength="8"/>
+                  <div ng-messages="form.password.$error" style="color:maroon" role="alert">
+                    <div ng-message="required">Your password is required.</div>
+                    <div ng-message="minlength">Your password should be at least 8 letters long</div>
+                  </div>
+              </div>
+              <div class="email">
+                Email:
+                <input
+                  name="email"
+                  ng-model="ctrl.email"
+                  required="required"
+                  type="email"/>
+                  <div ng-messages="form.email.$error" style="color:maroon" role="alert">
+                    <div ng-message="required">Your email is required.</div>
+                    <div ng-message="email">Not valid email address!</div>
+                  </div>
+              </div>
             </form>
         </div>
     </div>
@@ -53,6 +88,8 @@
     <script src="js/angular.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/controllers/FormController.js"></script>
+    <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
+    <script src="//code.angularjs.org/snapshot/angular-messages.js"></script>
 
 </body>
 </html>
