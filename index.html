@@ -44,8 +44,47 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
-
+            <form name="form">
+                    <input 
+                        name="username"
+                        required="required"
+                        pattern=".{3,}"
+                        maxlength="20"
+                        ng-model="ctrl.username" />
+                        <div>
+                             <p ng-if="form.username.$touched && form.username.$error.required">
+                                Username is required!
+                            </p>
+                             <p ng-if="form.username.$touched && form.username.$error.pattern">
+                                Must be at least 3 letters
+                            </p>
+                        </div>
+                    <input 
+                        name="password"
+                        required="required"
+                        minlength="8"
+                        ng-model="ctrl.password" />
+                        <div>
+                             <p ng-if="form.password.$touched && form.password.$error.required">
+                                Password is required!
+                            </p>
+                             <p ng-if="form.password.$touched && form.password.$error.minlength">
+                                Must be at least 8 letters
+                            </p>                           
+                        </div>
+                    <input  
+                        name= "email"
+                        required= "required"
+                        pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" 
+                        ng-model="ctrl.email" />
+                        <div>
+                             <p ng-if="form.email.$touched && form.email.$error.required">
+                                Password is required!
+                            </p>
+                             <p ng-if="form.email.$touched && form.email.$error.pattern">
+                                invalid
+                            </p>                           
+                        </div>
             </form>
         </div>
     </div>
