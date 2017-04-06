@@ -10,7 +10,6 @@
         body {
             font-family: "Helvetica Neue", Verdana, sans-serif;
         }
-
         table {
             border-collapse: collapse;
             width: 100%;
@@ -18,7 +17,6 @@
             border-radius: 5px;
             margin: 50px 0;
         }
-
         input {
             font-size: 16px;
             padding: 5px 7px;
@@ -30,11 +28,9 @@
             border-bottom: 2px solid rgba(0, 0, 0, 0.1);
             color: rgba(0, 0, 0, 0.8);
         }
-
         tr:not(:last-of-type) {
             border-bottom: 1px solid map-get($border-color, light);
         }
-
         td {
             padding: 16px 12px 14px;
         }
@@ -42,14 +38,61 @@
 </head>
 <body>
 
-    <div ng-app="app" class="app">
-        <div ng-controller="FormController as ctrl">
-            <form>
+<div ng-app="app" class="app">
+    <div ng-controller="FormController as ctrl">
+        <form name="form">
+            <input
+                name="username"
+                required="required"
+                minlength="3"
+                maxlength="20"
+                ng-model="ctrl.username"
+            />
+            <div ng-if="form.username.$touched">
+                <div ng-if="form.username.$error.required">
+                    Username is required!
+                </div>
+                <div ng-if="form.username.$error.minlength">
+                    Username must be at least 3 characters long!
+                </div>
+                <div ng-if="form.username.$error.required">
+                    Username cannot be more than 20 characters long!
+                </div>
+            </div>
 
-            </form>
-        </div>
+            <input
+                name="password"
+                required="required"
+                minlength="8"
+                ng-model="ctrl.password"
+            />
+            <div ng-if="form.password.$touched">
+                <div ng-if="form.password.$error.required">
+                    password is required!
+                </div>
+                <div ng-if="form.password.$error.minlength">
+                    password must be at least 8 characters long!
+                </div>
+            </div>
+
+            <input
+                name="email"
+                required="required"
+                type="email"
+                ng-model="ctrl.email"
+            />
+            <div ng-if="form.email.$touched">
+                <div ng-if="form.email.$error.required">
+                    Email is required!
+                </div>
+                <div ng-if="form.email.$error.email">
+                    Email must be valid!
+                </div>
+            </div>
+
+        </form>
     </div>
-
+</div>
     <script src="js/angular.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/controllers/FormController.js"></script>
