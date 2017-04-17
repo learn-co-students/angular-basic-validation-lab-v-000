@@ -44,9 +44,64 @@
 
     <div ng-app="app" class="app">
         <div ng-controller="FormController as ctrl">
-            <form>
+            <form name='login_form'>
+                <div>
+                  Username:
+                  <input
+                    type="text"
+                     name="username"
+                     required="required"
+                     minlength="3"
+                     maxlength="20"
+                     ng-model="ctrl.username" />
+                     <div ng-if="login_form.username.$touched">
+                        <div ng-if="login_form.username.$error.required">
+                            Username is required!
+                        </div>
+                        <div ng-if="login_form.username.$error.minlength">
+                            Username must be longer than 3 characters!
+                        </div>
+                        <div ng-if="login_form.username.$error.maxlength">
+                            Username must be shorter than 20 characters!
+                        </div>
+                    </div>
+                 </div>
 
-            </form>
+                 <div>
+                   Password:
+                    <input
+                      name="password"
+                      type="password"
+                      minlength="8"
+                      required="required"
+                      ng-model="ctrl.password"/>
+                      <div ng-if="login_form.password.$touched">
+                        <div ng-if="login_form.password.$error.minlength">
+                          Password must be longer than 8 characters!
+                        </div>
+                        <div ng-if="login_form.password.$error.required">
+                          Password is required!
+                        </div>
+                      </div>
+                 </div>
+
+                <div>
+                  Email:
+                  <input
+                    name="email"
+                    type="email"
+                    required="required"
+                    ng-model="ctrl.email"/>
+                    <div ng-if="login_form.email.$touched">
+                      <div ng-if="login_form.email.$error.required">
+                        Email is required!
+                      </div>
+                      <div ng-if="login_form.email.$error.email">
+                        Email must be valid!
+                      </div>
+                    </div>
+                </div>
+          </form>
         </div>
     </div>
 
